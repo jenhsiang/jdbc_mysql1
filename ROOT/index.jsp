@@ -50,15 +50,15 @@
 		
 		// 獲得資料庫連接。 三個參數分別為 連接URL，使用者名稱，密碼
 		conn = DriverManager.getConnection(
-							"jdbc:mysql://localhost:3306/nblog10", 
-							"nblogTW", 
-							"nblogTW");
+							"jdbc:mysql://localhost:3306/testdb", 
+							"testuser", 
+							"1234");
 		
 		// 獲得 Statement。 Statement 對像用於執行 SQL。相當於控制台。
 		stmt = conn.createStatement();
 		
 		// 使用 Statement 執行 SELECT 敘述。傳回結果集。
-		rs = stmt.executeQuery("select * from n2_member");	
+		rs = stmt.executeQuery("select * from member");	
 %>
 		<form action="operatePerson.jsp" method=get>
 			<table bgcolor="#CCCCCC" cellspacing=1 cellpadding=5 width=100%>
@@ -96,12 +96,12 @@
 					// 檢查結果集。rs.next() 傳回結果集中是否還有下一條記錄。如果有，自動捲動到下一條記錄並傳回 true
 					while (rs.next()) {
 
-						int id = rs.getInt("m_idx"); // 整形類型
-						int age = rs.getInt("m_userno");
+						int id = rs.getInt("idx"); // 整形類型
+						int age = rs.getInt("userno");
 
-						String name = rs.getString("m_userid"); // 字串類型
-						String englishName = rs.getString("m_passwd");
-						String sex = rs.getString("m_sex");
+						String name = rs.getString("userid"); // 字串類型
+						String englishName = rs.getString("passwd");
+						String sex = rs.getString("sex");
 						//String description = rs.getString("description");
 
 						//Date birthday = rs.getDate("birthday"); // 日期類型，只有日期資訊而沒有時間資訊
